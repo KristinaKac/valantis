@@ -7,6 +7,7 @@ import css from './Products.module.css';
 import Paginator from '../components/paginator/Paginator';
 import FilterForm from '../components/filter/FilterForm';
 import { getAllIdThunk } from '../redux/slices/productAPI';
+import { Spin } from 'antd';
 
 const Products = () => {
 
@@ -16,12 +17,11 @@ const Products = () => {
     const productsId = useSelector((state) => state.productReducer.productsId);
     const products = useSelector((state) => state.productReducer.products);
     const currentPage = useSelector((state) => state.productReducer.paginator.currentPage);
-    const portionPages = useSelector((state) => state.productReducer.paginator.portionPages);
 
     useEffect(() => {
-        const portion = currentPage * limitId;
+        const portion = (currentPage - 1) * limitId;
         dispatch(setPortionPages(portion));
-        dispatch(getIdThunk({ offsetId: portionPages, limitId }));
+        dispatch(getIdThunk({ offsetId: portion, limitId }));
     }, [currentPage]);
 
     useEffect(() => {
@@ -38,20 +38,21 @@ const Products = () => {
         <React.Fragment>
             {products.status === 'loaded'
                 ?
-                <div>
+                <div className={css.product_page}>
                     <Paginator />
                     <FilterForm />
                     {products.items.length === 0
-                        ? <div>По вашему запросу ничего не найдено</div>
+                        ? <div className={css.not_found}>По вашему запросу ничего не найдено</div>
                         : <ul className={css.product_list} >
                             {products.items.map((item, index) => <Product key={index} item={item} />)}
                         </ul>
                     }
                 </div>
                 :
-                <div>Loading...</div>
+                <div className={css.loading}>
+                    < Spin size="large" />
+                </div>
             }
-
         </React.Fragment>
     )
 }

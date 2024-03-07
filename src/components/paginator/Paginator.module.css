@@ -2,11 +2,14 @@
     display: flex;
     align-items: center;
     column-gap: 5px;
+    justify-content: center;
+    margin: 25px 10px;
 }
 
 .active {
-    background-color: black;
+    background-color: #1677ff;
     color: white;
+    border: none;
 }
 .pagination_item, 
 .pagination_first,
@@ -23,18 +26,12 @@
     align-items: center;
     cursor: pointer;
 }
-.pagination_first {
 
-}
-.pagination_prev {
-
-}
-.pagination_next {
-
-}
-.pagination_last {
-
-}
-.pagination_ellipsis {
-
+.pagination_item:hover, 
+.pagination_first:hover,
+.pagination_prev:hover,
+.pagination_next:hover,
+.pagination_last:hover,
+.pagination_ellipsis:hover  {
+    transform: scale(110%);
 }

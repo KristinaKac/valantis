@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllIdThunk, setCurrentPage } from '../../redux/slices/productAPI';
+import { setCurrentPage } from '../../redux/slices/productAPI';
 import css from './Paginator.module.css';
 import cn from 'classnames';
 import { DoubleRightOutlined, DoubleLeftOutlined, LeftOutlined, RightOutlined, SmallDashOutlined } from '@ant-design/icons';
@@ -8,33 +8,26 @@ import { DoubleRightOutlined, DoubleLeftOutlined, LeftOutlined, RightOutlined, S
 const Paginator = () => {
 
     const pages = [];
+    const totalCountPagesArr = [];
     const portionSize = 3;
 
     const dispatch = useDispatch();
 
-    const offsetId = useSelector((state) => state.productReducer.offsetId);
-
-
     const currentPage = useSelector((state) => state.productReducer.paginator.currentPage);
     const limitProductOnPage = useSelector((state) => state.productReducer.paginator.limitProductOnPage);
     const totalCountProduct = useSelector((state) => state.productReducer.paginator.totalCountProduct);
-
     const totalCountPages = Math.ceil(totalCountProduct / limitProductOnPage);
-    const totalCountPagesArr = [];
 
     for (let i = 0; i < totalCountPages; i++) {
         totalCountPagesArr[i] = i;
     }
 
-
     const clickPrevPage = () => {
         if (currentPage === 1) return;
-
         dispatch(setCurrentPage(currentPage - 1));
     }
     const clickNextPage = () => {
         if (currentPage === totalCountPagesArr.length) return;
-
         dispatch(setCurrentPage(currentPage + 1));
     }
     const clickFirstPage = () => {

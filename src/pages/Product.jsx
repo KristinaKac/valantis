@@ -7,18 +7,11 @@ const Product = ({ item }) => {
 
     return (
         <li className={css.product_item} >
-
-            <div>
-                {itemTitles.map(i => <div key={i} className={css.item_title}>{i}</div>)}
-            </div>
-
-            <div>
-                <div>{item.id}</div>
-                <div>{item.product}</div>
-                <div>{item.price}</div>
-                <div>{item.brand === null ? 'Не указано' : item.brand}</div>
-            </div>
-
+            {itemTitles.map(i => <div key={i} className={css.item_title}>{i}:</div>)}
+            <div>{item.id}</div>
+            <div>{item.product}</div>
+            <div>{item.price}</div>
+            <div>{item.brand === null ? 'Не указано' : item.brand}</div>
         </li>
     )
 }

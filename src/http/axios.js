@@ -48,7 +48,6 @@ export const getItems = async (productsId) => {
     });
 }
 export const filter = async (key, value) => {
-
     return host.post('/', {
         "action": "filter",
         "params": { [key]: value }

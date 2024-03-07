@@ -1,5 +1,33 @@
 .form {
     display: flex;
     align-items: center;
-    
+    border: 1px solid #ececec;
+    padding: 10px 15px;
+    column-gap: 10px;
+    border-radius: 5px;
+}
+
+.form_input {
+    border: none;
+    outline: none;
+    padding: 7px 10px;
+    width: 100%;
+}
+
+.form_select {
+    padding: 7px 10px;
+    border: 1px solid #ececec;
+}
+
+.btn {
+    padding: 7px 10px;
+    background-color: #1677ff;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #166eea
 }
