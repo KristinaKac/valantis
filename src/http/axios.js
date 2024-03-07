@@ -5,7 +5,7 @@ const stamp = new Date().toISOString().slice(0, 10).replace(/-/g, "");
 const password = 'Valantis';
 
 export const host = axios.create({
-    baseURL: 'http://api.valantis.store:40000',
+    baseURL: 'https://api.valantis.store:41000',
     headers: {
         "X-Auth": md5(`${password}_${stamp}`)
     },
